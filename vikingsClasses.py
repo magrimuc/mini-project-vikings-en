@@ -79,12 +79,16 @@ class War():
         return o
     
     def saxonAttack(self):
-        n = random.randint(0,len(self.saxonArmy)-1)
-        m = random.randint(0,len(self.vikingArmy)-1)
-        o = self.vikingArmy[m].receiveDamage(self.saxonArmy[n].strength)
-        if(self.vikingArmy[m].health < 1):
-            del self.vikingArmy[m]
-        return o
+        if(self.saxonArmy == []):
+            return self.showStatus()
+        else:
+            m = random.randint(0,len(self.saxonArmy)-1)
+            n = random.randint(0,len(self.vikingArmy)-1)
+            o = self.vikingArmy[n].receiveDamage(self.saxonArmy[m].strength)
+            if(self.vikingArmy[n].health < 1):
+                del self.vikingArmy[n]
+            return o
+        
 
     def showStatus(self):
         if(len(self.saxonArmy) == 0):
